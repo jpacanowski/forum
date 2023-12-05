@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+
+  # Web Server Service
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-forum
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app:/var/www
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+    depends_on:
+      - app
+      - db
+
+  # Database Service
+  db:
+    image : mysql
+    container_name: mysql-forum
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: secret
+
+  # Application Service
+  app:
+    container_name: forum-laravel
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    volumes:
+      - ./app:/var/www
+    ports:
+      - "9000:9000"
+    working_dir: /var/www
+
+  # phpMyAdmin Service
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin-forum
+    ports:
+      - "3400:80"
+    depends_on:
+      - db
