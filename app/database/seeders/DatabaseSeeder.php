@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Thread;
+use App\Models\Post;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,11 +13,34 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        Thread::truncate();
+        Post::truncate();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        Thread::create([
+            'user_id' => 1,
+            'category_id' => 1,
+            'subject' => 'JS - which framework to choose?',
+            'slug' => 'JS-which-framework-to-choose',
+            'created_at' => '2020-11-28 16:29:05'
+        ]);
+
+
+        Post::create([
+            'user_id' => 1,
+            'thread_id' => 1,
+            'content' => 'Lorem ipsum'
+        ]);
+
+        Post::create([
+            'user_id' => 3,
+            'thread_id' => 1,
+            'content' => 'Lorem ipsum'
+        ]);
+
+        Post::create([
+            'user_id' => 2,
+            'thread_id' => 1,
+            'content' => 'Lorem ipsum'
+        ]);
     }
 }

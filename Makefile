@@ -11,6 +11,6 @@ up:
 composer-update:
 	docker exec laravel-docker bash -c "composer update"
 data:
-	docker exec cms-laravel bash -c "php artisan migrate"
-	docker exec cms-laravel bash -c "php artisan db:seed"
+	docker exec forum-laravel bash -c "php artisan migrate"
+	docker exec forum-laravel bash -c "php artisan db:seed"
 
