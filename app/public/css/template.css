@@ -16,13 +16,26 @@ a:hover {
     margin: 44px auto;
 }
 
-.threads {
+.visually-hidden {
+	position: absolute;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	width: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+}
+
+.threads,
+.posts {
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-.thread {
+.thread,
+.post {
     display: flex;
     padding: 8px;
     margin-bottom: 5px;
@@ -76,4 +89,57 @@ a:hover {
 
 .thread__info {
     font-size: 12px;
+}
+
+.post {
+    display: block;
+}
+
+.post:first-child {
+    background-color: #ccc;
+}
+
+.post__info {
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.post__heading {
+    margin: 0 0 5px 0;
+    padding: 8px 52px 8px 20px;
+    background-color: #3498db;
+    color: #fff;
+}
+
+.post__content {
+    line-height: 1.5;
+}
+
+.posts li {
+    padding: 20px;
+}
+
+.form_answer #post_content {
+    width: calc(100% - 40px);
+    height: 200px;
+    padding: 20px;
+}
+
+.btn_submit,
+.btn_answer {
+    padding: 10px 14px;
+    background-color: #27ae60;
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+}
+
+.btn_submit {
+    display: block;
+    margin-top: 8px;
+}
+
+.btn_submit:hover,
+.btn_answer:hover {
+    background-color: #2ecc71;
 }

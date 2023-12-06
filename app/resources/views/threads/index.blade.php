@@ -14,7 +14,7 @@
               <span class="thread__count-pad">views</span>
             </div>
             <div class="thread__answers">
-              <span class="thread__count-data">{{ $thread->posts->count() }}</span>
+              <span class="thread__count-data">{{ $thread->posts->count() - 1 }}</span>
               <span class="thread__count-pad">answers</span>
             </div>
           </div>

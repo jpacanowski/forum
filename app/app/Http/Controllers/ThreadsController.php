@@ -13,4 +13,12 @@ class ThreadsController extends Controller
             'threads' => Thread::latest()->get()
         ]);
     }
+
+    // Show thread
+    public function single(Thread $thread) {
+        $thread->increment('visits');
+        return view('threads.single', [
+            'thread' => $thread
+        ]);
+    }
 }
