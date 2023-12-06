@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ThreadsController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ThreadsController::class, 'index']);
 Route::get('/{thread:slug}', [ThreadsController::class, 'single']);
+Route::get('/user/{user:name}', [UsersController::class, 'show']);

@@ -28,7 +28,8 @@ a:hover {
 }
 
 .threads,
-.posts {
+.posts,
+.user_info {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -142,4 +143,22 @@ a:hover {
 .btn_submit:hover,
 .btn_answer:hover {
     background-color: #2ecc71;
+}
+
+.user_info {
+    padding: 20px;
+    background-color: #fff;
+}
+
+.user_info ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.user_info label {
+    width: 200px;
+    margin-bottom: 8px;
+    display: inline-block;
+    font-weight: 600;
 }

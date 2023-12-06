@@ -10,7 +10,7 @@
       @foreach ($thread->posts as $post)
         <li class="post">
           <div class="post__info">
-            <a href="#">mono</a> 8 godzin temu
+            <a href="/user/{{ $post->user->name }}">{{ $post->user->name }}</a> 8 godzin temu
           </div>
           <div class="post__content">
             {{ $post->content }}
