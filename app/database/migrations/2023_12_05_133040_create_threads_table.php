@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable(false)->unsigned();
             $table->foreignId('category_id')->nullable(false)->unsigned();
+            $table->integer('visits')->unsigned()->default(0);
             $table->string('subject', 255)->nullable(false);
             $table->string('slug')->nullable(false)->unique();
             $table->enum('status', ['OPEN', 'CLOSED'])->default('OPEN');

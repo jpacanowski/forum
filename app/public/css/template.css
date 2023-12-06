@@ -1,0 +1,79 @@
+body {
+    background-color: #ddd;
+    font-family: "Open Sans", "Ubuntu", "Arial", "FreeSans", sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.wrapper {
+    width: 680px;
+    margin: 44px auto;
+}
+
+.threads {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.thread {
+    display: flex;
+    padding: 8px;
+    margin-bottom: 5px;
+    background: #fefefe;
+}
+
+.thread__stats {
+    display: flex;
+    margin-right: 14px;
+}
+
+.thread__views,
+.thread__answers {
+    width: 68px;
+    height: 44px;
+    text-align: center;
+    padding-top: 8px;
+}
+
+.thread__views {
+    background-color: #ecf0f1;
+    color: #445f7a;
+}
+
+.thread__answers {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.thread__count-data {
+    display: block;
+}
+
+.thread__count-pad {
+    font-size: 11px;
+}
+
+.thread__heading {
+    margin: 0;
+    padding: 0;
+}
+
+.thread__heading a {
+    color: #1a6a9b;
+    font-size: 18px;
+}
+
+.thread__heading a:hover {
+    color: #3498db;
+}
+
+.thread__info {
+    font-size: 12px;
+}
