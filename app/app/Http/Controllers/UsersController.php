@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-    // Show user
+    // Show user profile
     public function show(User $user) {
         return view('users.show', [
             'user' => $user

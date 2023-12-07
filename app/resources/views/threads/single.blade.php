@@ -29,7 +29,7 @@
 
     <button class="btn_answer">Answer</button>
 
-    <form class="form_answer" method="post" action="/posts">
+    <form class="form_answer" method="post" action="/posts/{{$thread->id}}">
       @csrf
 
       <label for="post_content" class="visually-hidden">Write a new post:</label>

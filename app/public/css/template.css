@@ -12,8 +12,8 @@ a:hover {
 }
 
 .wrapper {
-    width: 680px;
-    margin: 44px auto;
+    width: 1020px;
+    margin: 66px auto;
 }
 
 .visually-hidden {
@@ -38,22 +38,22 @@ a:hover {
 .thread,
 .post {
     display: flex;
-    padding: 8px;
-    margin-bottom: 5px;
+    padding: 12px;
+    margin-bottom: 8px;
     background: #fefefe;
 }
 
 .thread__stats {
     display: flex;
-    margin-right: 14px;
+    margin-right: 22px;
 }
 
 .thread__views,
 .thread__answers {
-    width: 68px;
-    height: 44px;
+    width: 102px;
+    height: 66px;
     text-align: center;
-    padding-top: 8px;
+    padding-top: 12px;
 }
 
 .thread__views {
@@ -68,20 +68,22 @@ a:hover {
 
 .thread__count-data {
     display: block;
+    font-size: 24px;
+    margin-bottom: 8px;
 }
 
 .thread__count-pad {
-    font-size: 11px;
+    font-size: 16px;
 }
 
 .thread__heading {
-    margin: 0;
+    margin: 8px 0 0 0;
     padding: 0;
 }
 
 .thread__heading a {
     color: #1a6a9b;
-    font-size: 18px;
+    font-size: 26px;
 }
 
 .thread__heading a:hover {
@@ -89,7 +91,9 @@ a:hover {
 }
 
 .thread__info {
-    font-size: 12px;
+    display: block;
+    font-size: 18px;
+    margin-top: 8px;
 }
 
 .post {
@@ -100,19 +104,22 @@ a:hover {
     background-color: #ccc;
 }
 
-.post__info {
-    font-size: 12px;
-    margin-bottom: 8px;
-}
-
 .post__heading {
     margin: 0 0 5px 0;
-    padding: 8px 52px 8px 20px;
+    padding: 12px 52px 12px 20px;
     background-color: #3498db;
+    font-size: 34px;
     color: #fff;
 }
 
+.post__info {
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
 .post__content {
+    font-size: 22px;
+    font-weight: 400;
     line-height: 1.5;
 }
 
@@ -128,7 +135,8 @@ a:hover {
 
 .btn_submit,
 .btn_answer {
-    padding: 10px 14px;
+    padding: 14px 18px;
+    font-weight: bold;
     background-color: #27ae60;
     cursor: pointer;
     color: #fff;
