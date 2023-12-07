@@ -7,6 +7,14 @@
   <main class="wrapper">
     <h2 class="post__heading">{{ $thread->subject }}</h2>
     <ul class="posts">
+      <li class="post">
+        <div class="post__info">
+          <a href="/user/{{ $thread->user->name }}">{{ $thread->user->name }}</a> 8 godzin temu
+        </div>
+        <div class="post__content">
+          {{ $thread->content }}
+        </div>
+      </li>
       @foreach ($thread->posts as $post)
         <li class="post">
           <div class="post__info">

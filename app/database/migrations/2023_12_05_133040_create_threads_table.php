@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('visits')->unsigned()->default(0);
             $table->string('subject', 255)->nullable(false);
             $table->string('slug')->nullable(false)->unique();
+            $table->text('content')->nullable(false);
             $table->enum('status', ['OPEN', 'CLOSED'])->default('OPEN');
             //$table->dateTime('last_post_date');
             $table->timestamps();
