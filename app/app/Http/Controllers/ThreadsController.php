@@ -15,6 +15,7 @@ class ThreadsController extends Controller
             'posts_number' => Post::count(),
             'users_number' => User::count(),
             'threads_number' => Thread::count(),
+            'top_users' => User::orderByDesc('points')->limit(10)->get(),
             'threads' => Thread::latest()->get()
         ]);
     }
@@ -26,6 +27,7 @@ class ThreadsController extends Controller
             'posts_number' => Post::count(),
             'users_number' => User::count(),
             'threads_number' => Thread::count(),
+            'top_users' => User::orderByDesc('points')->limit(10)->get(),
             'thread' => $thread
         ]);
     }

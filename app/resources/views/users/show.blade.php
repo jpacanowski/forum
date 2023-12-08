@@ -1,6 +1,6 @@
 @extends('threads.base')
 
-@section('title', 'Threads')
+@section('title', 'User info')
 
 
 @section('content')
@@ -35,6 +35,10 @@
         <li>
           <label>Number of answers:</label>
           {{ $user->posts->count() }}
+        </li>
+        <li>
+          <label>Points:</label>
+          {{ $user->points }}
         </li>
       </ul>
     </div>

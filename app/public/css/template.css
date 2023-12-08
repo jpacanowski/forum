@@ -102,11 +102,8 @@ a:hover {
     display: block;
 }
 
-.post:first-child {
-    background-color: #ccc;
-}
-
-.post__heading {
+.post__heading,
+.post__heading--answers {
     margin: 0 0 5px 0;
     padding: 12px 52px 12px 20px;
     background-color: #3498db;
@@ -114,9 +111,16 @@ a:hover {
     color: #fff;
 }
 
+.post__heading--answers {
+    margin: 8px 0;
+    background-color: #2ecc71;
+}
+
 .post__info {
-    font-size: 16px;
-    margin-bottom: 12px;
+    font-size: 18px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid #bdc3c7;
+    padding-bottom: 8px;
 }
 
 .post__content {
@@ -218,7 +222,7 @@ a:hover {
 }
 
 .top_users {
-    padding: 24px 0;
+    padding: 24px 0 12px 0;
     background-color: #fff;
     margin-top: 8px;
     font-size: 20px;
