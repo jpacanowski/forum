@@ -22,7 +22,10 @@
   </head>
 
     <body>
+      <div class="wrapper">
         @yield('content')
+        @yield('panel')
+      </div>
     </body>
 
 </html>

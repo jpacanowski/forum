@@ -12,8 +12,9 @@ a:hover {
 }
 
 .wrapper {
-    width: 1020px;
+    max-width: 1200px;
     margin: 66px auto;
+    display: flex;
 }
 
 .visually-hidden {
@@ -29,7 +30,8 @@ a:hover {
 
 .threads,
 .posts,
-.user_info {
+.user_info,
+.panel_stats ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -169,4 +171,63 @@ a:hover {
     margin-bottom: 8px;
     display: inline-block;
     font-weight: 600;
+}
+
+.content {
+    width: 75%;
+    margin-right: 8px;
+}
+
+.panel {
+    width: 25%;
+}
+
+.panel_stats ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.panel_stats li {
+    width: 50%;
+    padding: 18px 0;
+    color: #fff;
+    text-align: center;
+    font-size: 26px;
+}
+
+.panel_stats li:nth-child(1) {
+    background: #1abc9c;
+}
+
+.panel_stats li:nth-child(2) {
+    background: #2ecc71;
+}
+
+.panel_stats li:nth-child(3) {
+    background: #f1c40f;
+}
+
+.panel_stats li:nth-child(4) {
+    background: #e67e22;
+}
+
+.panel_stats li span {
+    display: block;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.top_users {
+    padding: 24px 0;
+    background-color: #fff;
+    margin-top: 8px;
+    font-size: 20px;
+}
+
+.top_users__heading {
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
 }

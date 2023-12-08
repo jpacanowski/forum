@@ -4,7 +4,7 @@
 
 
 @section('content')
-  <main class="wrapper">
+  <main class="content">
     <ul class="threads">
       @foreach ($threads as $thread)
         <li class="thread">
@@ -33,3 +33,7 @@
     </ul>
   </main>
 @endsection
+
+@section('panel')
+  @include('threads.panel')
+@stop

@@ -4,7 +4,7 @@
 
 
 @section('content')
-  <main class="wrapper">
+  <main class="content">
     <h2 class="post__heading">{{ $thread->subject }}</h2>
     <ul class="posts">
       <li class="post">
@@ -48,3 +48,7 @@
     </script>
   </main>
 @endsection
+
+@section('panel')
+  @include('threads.panel')
+@stop
