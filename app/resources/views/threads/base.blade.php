@@ -22,6 +22,7 @@
   </head>
 
     <body>
+      @yield('navbar')
       <div class="wrapper">
         @yield('content')
         @yield('panel')

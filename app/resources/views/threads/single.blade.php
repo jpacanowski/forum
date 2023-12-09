@@ -1,7 +1,11 @@
 @extends('threads.base')
 
-@section('title', 'Threads')
+@section('title', $thread->subject)
 
+
+@section('navbar')
+  @include('threads.navbar')
+@stop
 
 @section('content')
   <main class="content">

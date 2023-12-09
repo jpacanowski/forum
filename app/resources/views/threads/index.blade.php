@@ -3,6 +3,10 @@
 @section('title', 'Threads')
 
 
+@section('navbar')
+  @include('threads.navbar')
+@stop
+
 @section('content')
   <main class="content">
     <ul class="threads">
