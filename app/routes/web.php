@@ -16,7 +16,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ThreadsController::class, 'index']);
+Route::prefix('users')->group(function () {
+
+    // Login form
+    Route::get('/login', [UsersController::class, 'login'])->name('login')->middleware('guest');
+
+    // Logout user
+    Route::post('/logout', [UsersController::class, 'logout'])->name('logout')->middleware('auth');
+
+    // Log in user
+    Route::post('/authenticate', [UsersController::class, 'authenticate']);
+});
+
+Route::get('/', [ThreadsController::class, 'index'])->name('threads.index');
 Route::get('/{thread:slug}', [ThreadsController::class, 'single']);
 
 // Show user profile

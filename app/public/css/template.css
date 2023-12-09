@@ -13,7 +13,7 @@ a:hover {
 
 .wrapper {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto 44px auto;
     display: flex;
 }
 
@@ -49,8 +49,21 @@ a:hover {
     color: #fff;
 }
 
-.nav .login {
+.nav .login,
+.nav .logout {
     float: right;
+}
+
+.nav .logout {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    color: #fff;
+}
+
+.nav .logout:hover {
+    text-decoration: underline;
 }
 
 .visually-hidden {
@@ -270,4 +283,58 @@ a:hover {
     text-align: center;
     text-transform: uppercase;
     margin: 0;
+}
+
+/* ==================================================================== */
+/* === LOGIN FORM ===================================================== */
+/* ==================================================================== */
+
+.login-box {
+	padding: 0 0 40px 0;
+	background: #eee;
+	border: 2px solid #ddd;
+	text-align: center;
+	width: 337px;
+}
+
+.login-box h2 {
+	margin-bottom: 0;
+}
+
+.login-box p {
+	margin: 0 0 30px 0;
+	font-size: 10px;
+}
+
+.login-box a {
+	display: inline-block;
+	margin-top: 30px;
+}
+
+.login-box input {
+	display: block;
+	padding: 8px 14px;
+	margin: 12px auto 0 auto;
+	border-radius: 2px;
+	border: 1px solid #CDCDCD;
+	width: 80%;
+}
+
+.login-box input[type="submit"] {
+	margin: 20px auto 0 auto;
+	background: #4d90fe;
+	background: linear-gradient(top,#4d90fe,#4787ed);
+	font-weight: 600;
+	color: #fff;
+}
+
+.login-box input[type="submit"]:hover {
+	background: #357ae8;
+	background: linear-gradient(top,#4d90fe,#357ae8);
+}
+
+.vcenter {
+	position: absolute;
+	top: 50%; left: 50%;
+	transform: translate(-50%, -50%);
 }

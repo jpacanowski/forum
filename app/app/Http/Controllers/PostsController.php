@@ -6,6 +6,7 @@ use App\Models\Thread;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -15,12 +16,10 @@ class PostsController extends Controller
             'content' => 'required|min:3'
         ]);
 
-        $formFields['user_id'] = 1;
+        $formFields['user_id'] = Auth::user()->id;
         $formFields['thread_id'] = $thread->id;
 
-        $user = User::find(1);
-        $user->increment('points', 10);
-        $user->save();
+        Auth::user()->increment('points', 10);
 
         Post::create($formFields);
 

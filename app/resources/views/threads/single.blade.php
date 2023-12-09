@@ -32,25 +32,27 @@
       @endforeach
     </ul>
 
-    <button class="btn_answer">Answer</button>
+    @if (Auth::check())
+      <button class="btn_answer">Answer</button>
 
-    <form class="form_answer" method="post" action="/posts/{{$thread->id}}">
-      @csrf
+      <form class="form_answer" method="post" action="/posts/{{$thread->id}}">
+        @csrf
 
-      <label for="post_content" class="visually-hidden">Write a new post:</label>
-      <textarea id="post_content" name="content"></textarea>
+        <label for="post_content" class="visually-hidden">Write a new post:</label>
+        <textarea id="post_content" name="content"></textarea>
 
-      <input class="btn_submit" type="submit" value="Add post" />
-    </form>
+        <input class="btn_submit" type="submit" value="Add post" />
+      </form>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script>
-      $('.form_answer').hide();
-      $('.btn_answer').on("click", function() {
-        $('.btn_answer').hide();
-        $('.form_answer').show();
-      });
-    </script>
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+      <script>
+        $('.form_answer').hide();
+        $('.btn_answer').on("click", function() {
+          $('.btn_answer').hide();
+          $('.form_answer').show();
+        });
+      </script>
+    @endif
   </main>
 @endsection
 
