@@ -9,6 +9,13 @@ class Thread extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'subject',
+        'status',
+        'content',
+        'slug'
+    ];
+
     public function posts()
     {
         return $this->hasMany(Post::class);

@@ -16,7 +16,7 @@
           <a href="/user/{{ $thread->user->name }}">{{ $thread->user->name }}</a> ({{ $thread->user->points }} points) <span style="float: right">{{ $thread->created_at->diffForHumans() }}</span>
         </div>
         <div class="post__content">
-          {{ $thread->content }}
+          {!! $thread->content !!}
         </div>
       </li>
       <h2 class="post__heading--answers">{{ $thread->posts->count() }} answers</h2>

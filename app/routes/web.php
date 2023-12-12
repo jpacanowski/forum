@@ -31,15 +31,31 @@ Route::prefix('users')->group(function () {
 
 Route::prefix('dashboard')->middleware('auth')->group(function () {
 
-    // Admin panel - home page
-    Route::get('/', [AdminController::class, 'index']);
+    // Admin panel - index
+    Route::get('/', [AdminController::class, 'index'])->name('dashboard.index');
+
+    // Admin panel - threads
+    Route::get('/threads', [AdminController::class, 'threads'])->name('dashboard.threads');
+
+    // Admin panel - form to edit thread
+    Route::get('/thread/edit/{thread:id}', [ThreadsController::class, 'edit'])->name('threads.edit');
 });
 
 Route::get('/', [ThreadsController::class, 'index'])->name('threads.index');
+
+
+// Show thread
 Route::get('/{thread:slug}', [ThreadsController::class, 'single']);
+
+// Update thread
+Route::put('/threads/{thread:id}', [ThreadsController::class, 'update']);
+
+// Delete thread
+Route::delete('/threads/{thread:id}', [ThreadsController::class, 'destroy']);
+
 
 // Show user profile
 Route::get('/user/{user:name}', [UsersController::class, 'show']);
 
-// Store post message
+// Store post
 Route::post('/posts/{thread:id}', [PostsController::class, 'store']);

@@ -18,4 +18,11 @@ class AdminController extends Controller
             'php_version' => phpversion()
         ]);
     }
+
+    // Admin panel - threads
+    public function threads() {
+        return view('dashboard.threads', [
+            'threads' => Thread::latest()->get()
+        ]);
+    }
 }

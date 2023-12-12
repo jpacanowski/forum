@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('subject', 255)->nullable(false);
             $table->string('slug')->nullable(false)->unique();
             $table->text('content')->nullable(false);
-            $table->enum('status', ['OPEN', 'CLOSED'])->default('OPEN');
+            $table->enum('status', ['OPEN', 'CLOSED', 'HIDDEN', 'IMPORTANT'])->default('OPEN');
             //$table->dateTime('last_post_date');
             $table->timestamps();
         });
