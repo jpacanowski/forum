@@ -21,19 +21,22 @@ class DatabaseSeeder extends Seeder
         $user1 = User::create([
             'name' => 'Kaz',
             'email' => 'kaz@example.com',
-            'password' => 'kaz'
+            'password' => 'kaz',
+            'role' => 'ADMIN'
         ]);
 
         $user2 = User::create([
             'name' => 'mono',
             'email' => 'mono@example.com',
-            'password' => 'mono'
+            'password' => 'mono',
+            'role' => 'USER'
         ]);
 
         $user3 = User::create([
             'name' => 'jhusak',
             'email' => 'jhusak@example.com',
-            'password' => 'jhusak'
+            'password' => 'jhusak',
+            'role' => 'USER'
         ]);
 
 

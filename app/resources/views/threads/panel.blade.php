@@ -19,7 +19,7 @@
       </ul>
     </div>
     <div class="top_users">
-      <h4 class="top_users__heading">Top 15 users</h4>
+      <h4 class="top_users__heading">Top 10 users</h4>
       <ol>
         @foreach ($top_users as $top_user)
           <li><b>{{ $top_user->points }} p.</b> - {{ $top_user->name }}</li>

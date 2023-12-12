@@ -52,6 +52,7 @@ a:hover {
 .nav .login,
 .nav .logout {
     float: right;
+    margin-left: 18px;
 }
 
 .nav .logout {

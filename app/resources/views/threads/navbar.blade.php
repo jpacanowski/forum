@@ -19,17 +19,22 @@
           </li>
         @endif
       </ul>
-      @if (Auth::check())
-        <form method="POST" action="/users/logout" style="display: inline">
-          @csrf
-          @method('POST')
-          <button type="submit" class="logout">
-            Logout ({{ Auth::user()->name }})
-          </button>
-        </form>
-      @else
-        <a href="/users/login" class="login">Log in</a>
-      @endif
+      <div style="float: right">
+        @if (Auth::check())
+          @if (Auth::user()->role == 'ADMIN')
+            <a href="/dashboard">ADMIN</a>
+          @endif
+          <form method="POST" action="/users/logout" style="display: inline">
+            @csrf
+            @method('POST')
+            <button type="submit" class="logout">
+              Logout ({{ Auth::user()->name }})
+            </button>
+          </form>
+        @else
+          <a href="/users/login" class="login">Log in</a>
+        @endif
+      </div>
     </nav>
   </div>
 @endsection

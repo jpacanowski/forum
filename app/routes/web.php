@@ -3,6 +3,7 @@
 use App\Http\Controllers\ThreadsController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,12 @@ Route::prefix('users')->group(function () {
 
     // Log in user
     Route::post('/authenticate', [UsersController::class, 'authenticate']);
+});
+
+Route::prefix('dashboard')->middleware('auth')->group(function () {
+
+    // Admin panel - home page
+    Route::get('/', [AdminController::class, 'index']);
 });
 
 Route::get('/', [ThreadsController::class, 'index'])->name('threads.index');
