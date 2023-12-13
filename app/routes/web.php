@@ -39,6 +39,12 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
 
     // Admin panel - form to edit thread
     Route::get('/thread/edit/{thread:id}', [ThreadsController::class, 'edit'])->name('threads.edit');
+
+    // Admin panel - posts
+    Route::get('/posts', [AdminController::class, 'posts'])->name('dashboard.posts');
+
+    // Admin panel - form to edit post
+    Route::get('/post/edit/{post:id}', [PostsController::class, 'edit'])->name('posts.edit');
 });
 
 Route::get('/', [ThreadsController::class, 'index'])->name('threads.index');
@@ -54,8 +60,15 @@ Route::put('/threads/{thread:id}', [ThreadsController::class, 'update']);
 Route::delete('/threads/{thread:id}', [ThreadsController::class, 'destroy']);
 
 
-// Show user profile
-Route::get('/user/{user:name}', [UsersController::class, 'show']);
-
 // Store post
 Route::post('/posts/{thread:id}', [PostsController::class, 'store']);
+
+// Update post
+Route::put('/posts/{post:id}', [PostsController::class, 'update']);
+
+// Delete post
+Route::delete('/posts/{post:id}', [PostsController::class, 'destroy']);
+
+
+// Show user profile
+Route::get('/user/{user:name}', [UsersController::class, 'show']);

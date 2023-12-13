@@ -26,7 +26,7 @@
             <a href="/user/{{ $post->user->name }}">{{ $post->user->name }}</a> ({{ $post->user->points }} points) <span style="float: right">{{ $post->created_at->diffForHumans() }}</span>
           </div>
           <div class="post__content">
-            {{ $post->content }}
+            {!! $post->content !!}
           </div>
         </li>
       @endforeach

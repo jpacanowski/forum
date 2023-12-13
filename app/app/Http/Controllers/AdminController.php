@@ -25,4 +25,11 @@ class AdminController extends Controller
             'threads' => Thread::latest()->get()
         ]);
     }
+
+    // Admin panel - posts
+    public function posts() {
+        return view('dashboard.posts', [
+            'posts' => Post::latest()->get()
+        ]);
+    }
 }

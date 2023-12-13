@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
+    // Show form to edit post
+    public function edit(Post $post) {
+        return view('posts.edit', [
+            'post' => $post
+        ]);
+    }
+
     // Store post message
     public function store(Request $request, Thread $thread) {
         $formFields = $request->validate([
@@ -24,5 +31,21 @@ class PostsController extends Controller
         Post::create($formFields);
 
         return back();
+    }
+
+    // Update post data
+    public function update(Request $request, Post $post) {
+        $formFields = $request->validate([
+            'content' => 'required'
+        ]);
+
+        $post->update($formFields);
+        return back()->with('info', 'Post has been updated successfully');
+    }
+
+    // Delete post
+    public function destroy(Post $post) {
+        $post->delete();
+        return back()->with('info', 'Post has been deleted successfully');
     }
 }
