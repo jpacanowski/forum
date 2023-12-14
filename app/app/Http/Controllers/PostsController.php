@@ -28,7 +28,9 @@ class PostsController extends Controller
 
         Auth::user()->increment('points', 10);
 
-        Post::create($formFields);
+        $post = Post::create($formFields);
+
+        $thread->update(['last_post_date' => $post->created_at]);
 
         return back();
     }

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('slug')->nullable(false)->unique();
             $table->text('content')->nullable(false);
             $table->enum('status', ['OPEN', 'CLOSED', 'HIDDEN', 'IMPORTANT'])->default('OPEN');
-            //$table->dateTime('last_post_date');
+            $table->dateTime('last_post_date');
             $table->timestamps();
         });
     }

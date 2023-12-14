@@ -27,9 +27,11 @@
             <span class="thread__info">
               Rozpoczął: <a href="/user/{{ $thread->user->name }}">{{ $thread->user->name }}</a>
               @if($thread->posts->count() >= 1)
-              Ostatnia odpowiedź: <a href="/user/{{ $thread->posts->last()->user->name }}">{{ $thread->posts->last()->user->name }}</a>
+                Ostatnia odpowiedź: <a href="/user/{{ $thread->posts->last()->user->name }}">{{ $thread->posts->last()->user->name }}</a>
+                [{{ $thread->posts->last()->created_at }}]
+              @else
+                [{{ $thread->created_at }}]
               @endif
-              [{{ $thread->created_at }}]
             </span>
           </div>
         </li>

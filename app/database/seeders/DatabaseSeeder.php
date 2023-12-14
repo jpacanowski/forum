@@ -22,21 +22,32 @@ class DatabaseSeeder extends Seeder
             'name' => 'Kaz',
             'email' => 'kaz@example.com',
             'password' => 'kaz',
-            'role' => 'ADMIN'
+            'role' => 'ADMIN',
+            'points' => 280
         ]);
 
         $user2 = User::create([
             'name' => 'mono',
             'email' => 'mono@example.com',
             'password' => 'mono',
-            'role' => 'USER'
+            'role' => 'USER',
+            'points' => 140
         ]);
 
         $user3 = User::create([
             'name' => 'jhusak',
             'email' => 'jhusak@example.com',
             'password' => 'jhusak',
-            'role' => 'USER'
+            'role' => 'USER',
+            'points' => 80
+        ]);
+
+        $user3 = User::create([
+            'name' => 'mattonit',
+            'email' => 'mattonit@example.com',
+            'password' => 'mattonit',
+            'role' => 'USER',
+            'points' => 120
         ]);
 
 
@@ -47,6 +58,7 @@ class DatabaseSeeder extends Seeder
             'subject' => 'JS - which framework to choose?',
             'slug' => 'JS-which-framework-to-choose',
             'content' => 'I would like to know which JS framework to choose.',
+            'last_post_date' => '2018-11-28 16:29:05',
             'created_at' => '2018-11-28 16:29:05'
         ]);
 
@@ -64,6 +76,7 @@ class DatabaseSeeder extends Seeder
             'subject' => 'What programming language to start with?',
             'slug' => 'what-programming-language-to-start-with',
             'content' => 'What programming language should I choose as a first language to learn?',
+            'last_post_date' => '2011-11-28 16:29:05',
             'created_at' => '2020-11-28 16:29:05'
         ]);
 
@@ -93,6 +106,7 @@ class DatabaseSeeder extends Seeder
             'subject' => 'Installing OpenBSD',
             'slug' => 'installing-openbsd',
             'content' => 'I have a problem while installing OpenBSD. Could you help me, guys?',
+            'last_post_date' => '2023-11-28 16:29:05',
             'created_at' => '2023-11-28 16:29:05'
         ]);
 
@@ -116,6 +130,7 @@ class DatabaseSeeder extends Seeder
             'subject' => '4gb ram on 32bit system',
             'slug' => '4gb-ram-on-32bit-system',
             'content' => 'I installed debian 12 32bit on an old dell optiplex gx280 with 4gb of ddr2 ram but the system only reads 3gb. Is there any way to use whole ram memory?',
+            'last_post_date' => '2008-11-28 16:29:05',
             'created_at' => '2023-12-10 16:29:05'
         ]);
     }

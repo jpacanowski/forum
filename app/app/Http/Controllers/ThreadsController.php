@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class ThreadsController extends Controller
 {
@@ -18,7 +19,7 @@ class ThreadsController extends Controller
             'users_number' => User::count(),
             'threads_number' => Thread::count(),
             'top_users' => User::orderByDesc('points')->limit(10)->get(),
-            'threads' => Thread::latest()->get()
+            'threads' => Thread::orderByDesc('last_post_date')->get()
         ]);
     }
 
@@ -53,11 +54,12 @@ class ThreadsController extends Controller
 
         $formFields['slug'] = Str::slug($formFields['subject'], '-');
         $formFields['category_id'] = 1;
+        $formFields['last_post_date'] = Carbon::now()->toDateTimeString();
         $formFields['user_id'] = Auth::user()->id;
 
-        Auth::user()->increment('points', 20);
-
         Thread::create($formFields);
+
+        Auth::user()->increment('points', 20);
 
         return redirect()->route('threads.index');
     }

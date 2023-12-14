@@ -15,7 +15,8 @@ class Thread extends Model
         'subject',
         'status',
         'content',
-        'slug'
+        'slug',
+        'last_post_date'
     ];
 
     public function posts()
@@ -27,4 +28,9 @@ class Thread extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // public function lastPost()
+    // {
+    //     return $this->hasOne('App\Models\Post')->latest();
+    // }
 }
