@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 class ThreadsController extends Controller
 {
@@ -31,6 +32,34 @@ class ThreadsController extends Controller
             'top_users' => User::orderByDesc('points')->limit(10)->get(),
             'thread' => $thread
         ]);
+    }
+
+    // Create new thread (form)
+    public function create() {
+        return view('threads.create', [
+            'posts_number' => Post::count(),
+            'users_number' => User::count(),
+            'threads_number' => Thread::count(),
+            'top_users' => User::orderByDesc('points')->limit(10)->get()
+        ]);
+    }
+
+    // Store thread
+    public function store(Request $request) {
+        $formFields = $request->validate([
+            'subject' => 'required|min:3',
+            'content' => 'required|min:3'
+        ]);
+
+        $formFields['slug'] = Str::slug($formFields['subject'], '-');
+        $formFields['category_id'] = 1;
+        $formFields['user_id'] = Auth::user()->id;
+
+        Auth::user()->increment('points', 20);
+
+        Thread::create($formFields);
+
+        return redirect()->route('threads.index');
     }
 
     // Show form to edit thread

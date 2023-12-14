@@ -339,3 +339,26 @@ a:hover {
 	top: 50%; left: 50%;
 	transform: translate(-50%, -50%);
 }
+
+#post_subject {
+    margin: 2px 0 6px 0;
+    width: calc(100% - 42px);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 14px 20px;
+    font-size: 26px;
+}
+
+.ck-content {
+    font-size: 20px;
+    line-height: 1.5;
+    min-height: 300px;
+}
+
+.ck-content p {
+    padding: 10px 10px;
+}
+
+.ck-powered-by {
+    display: none;
+}

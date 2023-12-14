@@ -10,6 +10,8 @@ class Thread extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
+        'category_id',
         'subject',
         'status',
         'content',

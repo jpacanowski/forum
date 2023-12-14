@@ -50,8 +50,14 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
 Route::get('/', [ThreadsController::class, 'index'])->name('threads.index');
 
 
+// Create new thread (form)
+Route::get('/thread', [ThreadsController::class, 'create']);
+
 // Show thread
 Route::get('/{thread:slug}', [ThreadsController::class, 'single']);
+
+// Store thread
+Route::post('/threads', [ThreadsController::class, 'store']);
 
 // Update thread
 Route::put('/threads/{thread:id}', [ThreadsController::class, 'update']);

@@ -116,7 +116,7 @@ class DatabaseSeeder extends Seeder
             'subject' => '4gb ram on 32bit system',
             'slug' => '4gb-ram-on-32bit-system',
             'content' => 'I installed debian 12 32bit on an old dell optiplex gx280 with 4gb of ddr2 ram but the system only reads 3gb. Is there any way to use whole ram memory?',
-            'created_at' => '2023-12-28 16:29:05'
+            'created_at' => '2023-12-10 16:29:05'
         ]);
     }
 }
