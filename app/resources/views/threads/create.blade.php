@@ -13,6 +13,14 @@
     <form class="form_answer" method="post" action="/threads">
       @csrf
 
+      <label for="post_category" class="visually-hidden">Thread category:</label>
+      <select id="post_category" name="category_id" class="form-control">
+      <option value="">[Thread category]</option>
+        @foreach ($categories as $category)
+          <option value="{{ $category->id }}">{{ $category->name }}</option>
+        @endforeach
+      </select>
+
       <label for="post_subject" class="visually-hidden">Thread subject:</label>
       <input id="post_subject" name="subject" type="text" placeholder="Thread subject..." />
 

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Thread;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,6 +16,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::truncate();
+        Category::truncate();
         Thread::truncate();
         Post::truncate();
 
@@ -51,9 +53,35 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
+        $category1 = Category::create([
+            'name' => 'Programming',
+            'slug' => 'programming'
+        ]);
+
+        $category2 = Category::create([
+            'name' => 'Hardware',
+            'slug' => 'hardware'
+        ]);
+
+        $category3 = Category::create([
+            'name' => 'Games',
+            'slug' => 'games'
+        ]);
+
+        $category4 = Category::create([
+            'name' => 'Operating systems',
+            'slug' => 'operating-systems'
+        ]);
+
+        $category5 = Category::create([
+            'name' => 'Others',
+            'slug' => 'others'
+        ]);
+
+
         $thread1 = Thread::create([
             'user_id' => $user1->id,
-            'category_id' => 1,
+            'category_id' => $category1->id,
             'visits' => 0,
             'subject' => 'JS - which framework to choose?',
             'slug' => 'JS-which-framework-to-choose',
@@ -71,7 +99,7 @@ class DatabaseSeeder extends Seeder
 
         $thread2 = Thread::create([
             'user_id' => $user2->id,
-            'category_id' => 1,
+            'category_id' => $category1->id,
             'visits' => 10,
             'subject' => 'What programming language to start with?',
             'slug' => 'what-programming-language-to-start-with',
@@ -101,7 +129,7 @@ class DatabaseSeeder extends Seeder
 
         $thread3 = Thread::create([
             'user_id' => $user3->id,
-            'category_id' => 1,
+            'category_id' => $category4->id,
             'visits' => 8,
             'subject' => 'Installing OpenBSD',
             'slug' => 'installing-openbsd',
@@ -125,7 +153,7 @@ class DatabaseSeeder extends Seeder
 
         $thread4 = Thread::create([
             'user_id' => $user3->id,
-            'category_id' => 1,
+            'category_id' => $category2->id,
             'visits' => 3,
             'subject' => '4gb ram on 32bit system',
             'slug' => '4gb-ram-on-32bit-system',

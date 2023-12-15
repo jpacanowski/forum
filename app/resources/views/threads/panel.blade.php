@@ -20,11 +20,19 @@
     </div>
     <div class="top_users">
       <h4 class="top_users__heading">Top 10 users</h4>
-      <ol>
+      <ul>
         @foreach ($top_users as $top_user)
-          <li><b>{{ $top_user->points }} p.</b> - {{ $top_user->name }}</li>
+          <li>{{ $loop->iteration }}. <b>{{ $top_user->points }} p.</b> - {{ $top_user->name }}</li>
         @endforeach
-      </ol>
+      </ul>
+    </div>
+    <div class="categories">
+      <h4 class="categories__heading">Categories</h4>
+      <ul>
+        @foreach ($categories as $category)
+          <li><a href="/categories/{{ $category->slug }}">{{ $category->name }}</a></li>
+        @endforeach
+      </ul>
     </div>
   </aside>
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Thread;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -18,6 +19,7 @@ class ThreadsController extends Controller
             'posts_number' => Post::count(),
             'users_number' => User::count(),
             'threads_number' => Thread::count(),
+            'categories' => Category::all(),
             'top_users' => User::orderByDesc('points')->limit(10)->get(),
             'threads' => Thread::orderByDesc('last_post_date')->get()
         ]);
@@ -30,6 +32,7 @@ class ThreadsController extends Controller
             'posts_number' => Post::count(),
             'users_number' => User::count(),
             'threads_number' => Thread::count(),
+            'categories' => Category::all(),
             'top_users' => User::orderByDesc('points')->limit(10)->get(),
             'thread' => $thread
         ]);
@@ -41,6 +44,7 @@ class ThreadsController extends Controller
             'posts_number' => Post::count(),
             'users_number' => User::count(),
             'threads_number' => Thread::count(),
+            'categories' => Category::all(),
             'top_users' => User::orderByDesc('points')->limit(10)->get()
         ]);
     }
@@ -49,11 +53,11 @@ class ThreadsController extends Controller
     public function store(Request $request) {
         $formFields = $request->validate([
             'subject' => 'required|min:3',
-            'content' => 'required|min:3'
+            'content' => 'required|min:3',
+            'category_id' => 'required'
         ]);
 
         $formFields['slug'] = Str::slug($formFields['subject'], '-');
-        $formFields['category_id'] = 1;
         $formFields['last_post_date'] = Carbon::now()->toDateTimeString();
         $formFields['user_id'] = Auth::user()->id;
 
@@ -67,6 +71,7 @@ class ThreadsController extends Controller
     // Show form to edit thread
     public function edit(Thread $thread) {
         return view('threads.edit', [
+            'categories' => Category::all(),
             'thread' => $thread
         ]);
     }
@@ -76,6 +81,7 @@ class ThreadsController extends Controller
         $formFields = $request->validate([
             'subject' => 'required',
             'status' => 'required',
+            'category_id' => 'required',
             'content' => 'required'
         ]);
 

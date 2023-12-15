@@ -271,19 +271,33 @@ a:hover {
     margin-bottom: 8px;
 }
 
-.top_users {
-    padding: 24px 0 12px 0;
+.top_users,
+.categories {
+    padding: 24px;
     background-color: #fff;
     margin-top: 8px;
     font-size: 20px;
 }
 
-.top_users__heading {
+.top_users__heading,
+.categories__heading {
     font-size: 22px;
     font-weight: 600;
     text-align: center;
     text-transform: uppercase;
+    margin: 0 0 28px 0;
+}
+
+.top_users ul,
+.categories ul {
+    list-style-type: none;
     margin: 0;
+    padding: 0;
+}
+
+.top_users li,
+.categories li {
+    margin-bottom: 8px;
 }
 
 /* ==================================================================== */
@@ -347,6 +361,13 @@ a:hover {
     border: 1px solid #ccc;
     padding: 14px 20px;
     font-size: 26px;
+}
+
+#post_category {
+    width: 100%;
+    padding: 8px;
+    margin: 2px 0 5px 0;
+    border: 1px solid #ccc;
 }
 
 .ck-content {
