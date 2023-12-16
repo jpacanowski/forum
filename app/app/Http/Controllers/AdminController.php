@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Thread;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -30,6 +31,13 @@ class AdminController extends Controller
     public function posts() {
         return view('dashboard.posts', [
             'posts' => Post::latest()->get()
+        ]);
+    }
+
+    // Admin panel - categories
+    public function categories() {
+        return view('dashboard.categories', [
+            'categories' => Category::all()
         ]);
     }
 }

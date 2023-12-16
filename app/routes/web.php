@@ -46,6 +46,15 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
 
     // Admin panel - form to edit post
     Route::get('/post/edit/{post:id}', [PostsController::class, 'edit'])->name('posts.edit');
+
+    // Admin panel - categories
+    Route::get('/categories', [AdminController::class, 'categories'])->name('dashboard.categories');
+
+    // Admin panel - create new category (form)
+    Route::get('/categories/create', [CategoriesController::class, 'create']);
+
+    // Admin panel - form to edit category
+    Route::get('/categories/edit/{category:id}', [CategoriesController::class, 'edit'])->name('categories.edit');
 });
 
 Route::get('/', [ThreadsController::class, 'index'])->name('threads.index');
@@ -83,3 +92,12 @@ Route::get('/user/{user:name}', [UsersController::class, 'show']);
 
 // Show threads by category
 Route::get('/categories/{slug}', [CategoriesController::class, 'index']);
+
+// Store category
+Route::post('/categories', [CategoriesController::class, 'store']);
+
+// Update category
+Route::put('/categories/{category:id}', [CategoriesController::class, 'update']);
+
+// Delete category
+Route::delete('/categories/{category:id}', [CategoriesController::class, 'destroy']);

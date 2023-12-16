@@ -22,4 +22,46 @@ class CategoriesController extends Controller
             'threads' => $category->threads()->orderByDesc('last_post_date')->get()
         ]);
     }
+
+    // Show form to create category
+    public function create() {
+        return view('categories.create');
+    }
+
+    // Show form to edit category
+    public function edit(Category $category) {
+        return view('categories.edit', [
+            'category' => $category
+        ]);
+    }
+
+    // Store category
+    public function store(Request $request, Category $category) {
+        $formFields = $request->validate([
+            'name' => 'required|min:3',
+            'slug' => 'required|min:3'
+        ]);
+
+        $category = Category::create($formFields);
+
+        return redirect()->route('categories.edit', $category)
+            ->with('info', 'Category has been created successfully');
+    }
+
+    // Update category data
+    public function update(Request $request, Category $category) {
+        $formFields = $request->validate([
+            'name' => 'required|min:3',
+            'slug' => 'required|min:3'
+        ]);
+
+        $category->update($formFields);
+        return back()->with('info', 'Category has been updated successfully');
+    }
+
+    // Delete category
+    public function destroy(Category $category) {
+        $category->delete();
+        return back()->with('info', 'Category has been deleted successfully');
+    }
 }

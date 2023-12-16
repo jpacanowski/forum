@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
             'points' => 80
         ]);
 
-        $user3 = User::create([
+        $user4 = User::create([
             'name' => 'mattonit',
             'email' => 'mattonit@example.com',
             'password' => 'mattonit',
