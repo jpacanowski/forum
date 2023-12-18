@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -71,5 +72,17 @@ class UsersController extends Controller
         return redirect()
             ->route('threads.index')
             ->with('message', 'User has been created and logged in');
+    }
+
+    // Show user threads
+    public function threads() {
+        return view('threads.index', [
+            'posts_number' => Post::count(),
+            'users_number' => User::count(),
+            'threads_number' => Thread::count(),
+            'categories' => Category::all(),
+            'top_users' => User::orderByDesc('points')->limit(10)->get(),
+            'threads' => Auth::user()->threads()->orderByDesc('last_post_date')->get()
+        ]);
     }
 }

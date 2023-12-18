@@ -92,6 +92,9 @@ Route::delete('/posts/{post:id}', [PostsController::class, 'destroy']);
 // Show user profile
 Route::get('/user/{user:name}', [UsersController::class, 'show']);
 
+// Show user threads
+Route::get('/user/{user:name}/threads', [UsersController::class, 'threads']);
+
 // Create new user
 Route::post('/users', [UsersController::class, 'store']);
 
