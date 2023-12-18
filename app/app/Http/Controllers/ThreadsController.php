@@ -61,7 +61,8 @@ class ThreadsController extends Controller
         $formFields['last_post_date'] = Carbon::now()->toDateTimeString();
         $formFields['user_id'] = Auth::user()->id;
 
-        Thread::create($formFields);
+        $thread = Thread::create($formFields);
+        $thread->update(['slug' => $thread->slug . '-' . $thread->id]);
 
         Auth::user()->increment('points', 20);
 

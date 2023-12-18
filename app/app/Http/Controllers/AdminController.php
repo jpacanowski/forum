@@ -40,4 +40,9 @@ class AdminController extends Controller
             'categories' => Category::all()
         ]);
     }
+
+    // Admin panel - about
+    public function about() {
+        return view('dashboard.about');
+    }
 }

@@ -58,6 +58,9 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
 
     // Admin panel - form to edit category
     Route::get('/categories/edit/{category:id}', [CategoriesController::class, 'edit'])->name('categories.edit');
+
+    // Admin panel - about
+    Route::get('/about', [AdminController::class, 'about'])->name('dashboard.about');
 });
 
 Route::get('/', [ThreadsController::class, 'index'])->name('threads.index');
