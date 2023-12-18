@@ -21,7 +21,7 @@
       </li>
       <h2 class="post__heading--answers">{{ $thread->posts->count() }} answers</h2>
       @foreach ($thread->posts as $post)
-        <li class="post">
+        <li class="post" id="post_{{$post->id}}">
           <div class="post__info">
             <a href="/user/{{ $post->user->name }}">{{ $post->user->name }}</a> ({{ $post->user->points }} points) <span style="float: right">{{ $post->created_at->diffForHumans() }}</span>
           </div>

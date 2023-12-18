@@ -75,14 +75,26 @@ class UsersController extends Controller
     }
 
     // Show user threads
-    public function threads() {
+    public function threads(User $user) {
         return view('threads.index', [
             'posts_number' => Post::count(),
             'users_number' => User::count(),
             'threads_number' => Thread::count(),
             'categories' => Category::all(),
             'top_users' => User::orderByDesc('points')->limit(10)->get(),
-            'threads' => Auth::user()->threads()->orderByDesc('last_post_date')->get()
+            'threads' => Thread::whereUserId($user->id)->orderByDesc('last_post_date')->get()
+        ]);
+    }
+
+    // Show user posts
+    public function posts(User $user) {
+        return view('posts.index', [
+            'posts_number' => Post::count(),
+            'users_number' => User::count(),
+            'threads_number' => Thread::count(),
+            'categories' => Category::all(),
+            'top_users' => User::orderByDesc('points')->limit(10)->get(),
+            'posts' => Post::whereUserId($user->id)->latest()->get()
         ]);
     }
 }

@@ -12,10 +12,10 @@
             <a href="/thread">Create new thread</a>
           </li>
           <li>
-            <a href="/user/{{Auth::user()->name}}/threads">Your threads</a>
+            <a href="/user/{{Auth::user()->name}}/threads">Your threads ({{ Auth::user()->threads->count() }})</a>
           </li>
           <li>
-            <a href="/user/{{Auth::user()->name}}/posts">Your posts</a>
+            <a href="/user/{{Auth::user()->name}}/posts">Your posts ({{ Auth::user()->posts->count() }})</a>
           </li>
         @endif
       </ul>
