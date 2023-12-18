@@ -21,7 +21,7 @@ class ThreadsController extends Controller
             'threads_number' => Thread::count(),
             'categories' => Category::all(),
             'top_users' => User::orderByDesc('points')->limit(10)->get(),
-            'threads' => Thread::orderByDesc('last_post_date')->get()
+            'threads' => Thread::filter(request(['search']))->orderByDesc('last_post_date')->get()
         ]);
     }
 

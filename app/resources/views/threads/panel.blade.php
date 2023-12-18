@@ -14,9 +14,17 @@
           <span>{{ $users_number }}</span> users
         </li>
         <li>
-          <span></span>
+          <span>{{ $categories->count() }}</span> categories
         </li>
       </ul>
+    </div>
+    <div class="categories">
+      <form class="form" action="/">
+
+        <label for="search" class="visually-hidden">Search:</label>
+        <input id="search" name="search" type="search" placeholder="Search..." class="input-control" />
+
+      </form>
     </div>
     <div class="top_users">
       <h4 class="top_users__heading">Top 10 users</h4>

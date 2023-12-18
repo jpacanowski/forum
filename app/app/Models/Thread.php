@@ -34,6 +34,13 @@ class Thread extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function scopeFilter($query, array $filters) {
+        if($filters['search'] ?? false) {
+            $query->where('subject', 'like', '%' . request('search') . '%')
+                ->orWhere('content', 'like', '%' . request('search') . '%');
+        }
+    }
+
     // public function lastPost()
     // {
     //     return $this->hasOne('App\Models\Post')->latest();
