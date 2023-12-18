@@ -33,6 +33,7 @@
           </form>
         @else
           <a href="/users/login" class="login">Log in</a>
+          <a href="/users/register" class="login">Register</a>
         @endif
       </div>
     </nav>

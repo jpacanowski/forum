@@ -28,6 +28,9 @@ Route::prefix('users')->group(function () {
 
     // Log in user
     Route::post('/authenticate', [UsersController::class, 'authenticate']);
+
+    // Register user (form)
+    Route::get('/register', [UsersController::class, 'create']);
 });
 
 Route::prefix('dashboard')->middleware('auth')->group(function () {
@@ -88,6 +91,9 @@ Route::delete('/posts/{post:id}', [PostsController::class, 'destroy']);
 
 // Show user profile
 Route::get('/user/{user:name}', [UsersController::class, 'show']);
+
+// Create new user
+Route::post('/users', [UsersController::class, 'store']);
 
 
 // Show threads by category
