@@ -6,6 +6,7 @@ use App\Models\Thread;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Settings;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -38,6 +39,13 @@ class AdminController extends Controller
     public function categories() {
         return view('dashboard.categories', [
             'categories' => Category::all()
+        ]);
+    }
+
+    // Admin panel - settings
+    public function settings() {
+        return view('dashboard.settings', [
+            'settings' => Settings::first()
         ]);
     }
 

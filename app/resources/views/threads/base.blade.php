@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Forum Name - @yield('title')</title>
+    <title>{{ $settings->forum_name }} - @yield('title')</title>
 
     <!-- Google Fonts -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" />

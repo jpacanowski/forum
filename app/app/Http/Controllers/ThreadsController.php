@@ -6,6 +6,7 @@ use App\Models\Thread;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Settings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -20,6 +21,7 @@ class ThreadsController extends Controller
             'users_number' => User::count(),
             'threads_number' => Thread::count(),
             'categories' => Category::all(),
+            'settings' => Settings::first(),
             'top_users' => User::orderByDesc('points')->limit(10)->get(),
             'threads' => Thread::filter(request(['search']))->orderByDesc('last_post_date')->get()
         ]);
@@ -33,6 +35,7 @@ class ThreadsController extends Controller
             'users_number' => User::count(),
             'threads_number' => Thread::count(),
             'categories' => Category::all(),
+            'settings' => Settings::first(),
             'top_users' => User::orderByDesc('points')->limit(10)->get(),
             'thread' => $thread
         ]);
@@ -45,6 +48,7 @@ class ThreadsController extends Controller
             'users_number' => User::count(),
             'threads_number' => Thread::count(),
             'categories' => Category::all(),
+            'settings' => Settings::first(),
             'top_users' => User::orderByDesc('points')->limit(10)->get()
         ]);
     }

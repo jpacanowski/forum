@@ -6,6 +6,7 @@ use App\Models\Thread;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Settings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,6 +19,7 @@ class UsersController extends Controller
             'posts_number' => Post::count(),
             'users_number' => User::count(),
             'categories' => Category::all(),
+            'settings' => Settings::first(),
             'top_users' => User::orderByDesc('points')->limit(10)->get()
         ]);
     }
@@ -25,13 +27,16 @@ class UsersController extends Controller
     // Show user profile
     public function show(User $user) {
         return view('users.show', [
+            'settings' => Settings::first(),
             'user' => $user
         ]);
     }
 
     // Show login form
     public function login() {
-        return view('users.login');
+        return view('users.login', [
+            'settings' => Settings::first()
+        ]);
     }
 
     // Logout User
@@ -81,6 +86,7 @@ class UsersController extends Controller
             'users_number' => User::count(),
             'threads_number' => Thread::count(),
             'categories' => Category::all(),
+            'settings' => Settings::first(),
             'top_users' => User::orderByDesc('points')->limit(10)->get(),
             'threads' => Thread::whereUserId($user->id)->orderByDesc('last_post_date')->get()
         ]);
@@ -93,6 +99,7 @@ class UsersController extends Controller
             'users_number' => User::count(),
             'threads_number' => Thread::count(),
             'categories' => Category::all(),
+            'settings' => Settings::first(),
             'top_users' => User::orderByDesc('points')->limit(10)->get(),
             'posts' => Post::whereUserId($user->id)->latest()->get()
         ]);
