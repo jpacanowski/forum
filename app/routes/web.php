@@ -60,6 +60,15 @@ Route::prefix('dashboard')->middleware('auth')->group(function () {
     // Admin panel - form to edit category
     Route::get('/categories/edit/{category:id}', [CategoriesController::class, 'edit'])->name('categories.edit');
 
+    // Admin panel - users
+    Route::get('/users', [AdminController::class, 'users'])->name('dashboard.users');
+
+    // Admin panel - form to create user
+    Route::get('/users/create', [UsersController::class, 'create'])->name('users.create');
+
+    // Admin panel - form to edit user
+    Route::get('/users/edit/{user:id}', [UsersController::class, 'edit'])->name('users.edit');
+
     // Admin panel - settings
     Route::get('/settings', [AdminController::class, 'settings'])->name('dashboard.settings');
 
@@ -105,8 +114,15 @@ Route::get('/user/{user:name}/threads', [UsersController::class, 'threads']);
 // Show user posts
 Route::get('/user/{user:name}/posts', [UsersController::class, 'posts']);
 
-// Create new user
+
+// Create user
 Route::post('/users', [UsersController::class, 'store']);
+
+// Update user
+Route::put('/users/{user}', [UsersController::class, 'update']);
+
+// Delete user
+Route::delete('/users/{user}', [UsersController::class, 'destroy']);
 
 
 // Show threads by category

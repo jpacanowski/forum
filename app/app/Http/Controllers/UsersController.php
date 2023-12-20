@@ -62,6 +62,13 @@ class UsersController extends Controller
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
     }
 
+    // Show form to edit user
+    public function edit(User $user) {
+        return view('users.edit', [
+            'user' => $user
+        ]);
+    }
+
     // Create new user
     public function store(Request $request) {
         $formFields = $request->validate([
@@ -77,6 +84,24 @@ class UsersController extends Controller
         return redirect()
             ->route('threads.index')
             ->with('message', 'User has been created and logged in');
+    }
+
+    // Update user data
+    public function update(Request $request, User $user) {
+        $formFields = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'role' => 'required'
+        ]);
+
+        $user->update($formFields);
+        return back()->with('info', 'User has been updated successfully');
+    }
+
+    // Delete user
+    public function destroy(User $user) {
+        $user->delete();
+        return back()->with('info', 'User has been deleted successfully');
     }
 
     // Show user threads

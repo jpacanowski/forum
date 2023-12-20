@@ -35,6 +35,13 @@ class AdminController extends Controller
         ]);
     }
 
+    // Admin panel - users
+    public function users() {
+        return view('dashboard.users', [
+            'users' => User::all()
+        ]);
+    }
+
     // Admin panel - categories
     public function categories() {
         return view('dashboard.categories', [
