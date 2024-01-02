@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Settings;
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -70,14 +71,9 @@ class UsersController extends Controller
     }
 
     // Create new user
-    public function store(Request $request) {
-        $formFields = $request->validate([
-            'name' => ['required', 'min:3'],
-            'email' => ['required', 'email'],
-            'password' => 'required|confirmed|min:6'
-        ]);
+    public function store(UserRequest $request) {
 
-        $user = User::create($formFields);
+        $user = User::create($request->validated());
 
         auth()->login($user);
 
@@ -87,14 +83,8 @@ class UsersController extends Controller
     }
 
     // Update user data
-    public function update(Request $request, User $user) {
-        $formFields = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'role' => 'required'
-        ]);
-
-        $user->update($formFields);
+    public function update(UserRequest $request, User $user) {
+        $user->update($request->validated());
         return back()->with('info', 'User has been updated successfully');
     }
 
