@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Settings;
+use App\Http\Requests\ThreadRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -54,18 +55,15 @@ class ThreadsController extends Controller
     }
 
     // Store thread
-    public function store(Request $request) {
-        $formFields = $request->validate([
-            'subject' => 'required|min:3',
-            'content' => 'required|min:3',
-            'category_id' => 'required'
-        ]);
+    public function store(ThreadRequest $request) {
 
-        $formFields['slug'] = Str::slug($formFields['subject'], '-');
-        $formFields['last_post_date'] = Carbon::now()->toDateTimeString();
-        $formFields['user_id'] = Auth::user()->id;
+        $validated = $request->validated();
 
-        $thread = Thread::create($formFields);
+        $validated['slug'] = Str::slug($validated['subject'], '-');
+        $validated['last_post_date'] = Carbon::now()->toDateTimeString();
+        $validated['user_id'] = Auth::user()->id;
+
+        $thread = Thread::create($validated);
         $thread->update(['slug' => $thread->slug . '-' . $thread->id]);
 
         Auth::user()->increment('points', 20);
@@ -82,17 +80,13 @@ class ThreadsController extends Controller
     }
 
     // Update thread data
-    public function update(Request $request, Thread $thread) {
-        $formFields = $request->validate([
-            'subject' => 'required',
-            'status' => 'required',
-            'category_id' => 'required',
-            'content' => 'required'
-        ]);
+    public function update(ThreadRequest $request, Thread $thread) {
 
-        $formFields['slug'] = Str::slug($formFields['subject'], '-') . '-' . $thread->id;
+        $validated = $request->validated();
 
-        $thread->update($formFields);
+        $validated['slug'] = Str::slug($validated['subject'], '-') . '-' . $thread->id;
+
+        $thread->update($validated);
         return back()->with('info', 'Thread has been updated successfully');
     }
 
