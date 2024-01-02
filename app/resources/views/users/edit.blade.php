@@ -27,8 +27,16 @@
       <label for="username">Username:</label>
       <input id="username" name="name" type="text" class="form-control" value="{{ $user->name }}" />
 
+      @error('name')
+        <p class="alert-danger">{{$message}}</p>
+      @enderror
+
       <label for="email">E-mail:</label>
       <input id="email" name="email" type="email" class="form-control" value="{{ $user->email }}" />
+
+      @error('email')
+        <p class="alert-danger">{{$message}}</p>
+      @enderror
 
       <label for="role">User role:</label>
       <select id="role" name="role" class="form-control">

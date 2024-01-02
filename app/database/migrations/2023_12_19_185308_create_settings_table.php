@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->string('forum_name');
-            $table->string('forum_tagline');
-            $table->string('forum_description');
-            $table->string('forum_keywords');
+            $table->string('forum_tagline')->nullable();
+            $table->string('forum_description')->nullable();
+            $table->string('forum_keywords')->nullable();
             $table->string('forum_url');
             $table->integer('posts_per_page')->default(20);
             $table->timestamps();

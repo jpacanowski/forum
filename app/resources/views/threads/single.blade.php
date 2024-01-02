@@ -33,6 +33,11 @@
     </ul>
 
     @if (Auth::check())
+
+      @error('content')
+        <p class="alert-danger">{{$message}}</p>
+      @enderror
+
       <button class="btn_answer">Answer</button>
 
       <form class="form_answer" method="post" action="/posts/{{$thread->id}}">

@@ -27,6 +27,10 @@
       <label for="post_title">Thread subject:</label>
       <input id="post_title" name="subject" type="text" value="{{ $thread->subject }}" />
 
+      @error('subject')
+        <p class="alert-danger">{{$message}}</p>
+      @enderror
+
       <label for="post_status">Thread status:</label>
       <select id="post_status" name="status" class="form-control">
         <option value="OPEN" {{ $thread->status == 'OPEN' ? 'selected' : '' }}>OPEN</option>

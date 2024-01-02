@@ -27,8 +27,16 @@
       <label for="username">Name:</label>
       <input id="username" name="name" type="text" class="form-control" value="{{ $category->name }}" />
 
+      @error('name')
+        <p class="alert-danger">{{$message}}</p>
+      @enderror
+
       <label for="email">Slug:</label>
       <input id="email" name="slug" type="text" class="form-control" value="{{ $category->slug }}" />
+
+      @error('slug')
+        <p class="alert-danger">{{$message}}</p>
+      @enderror
 
       <input type="submit" value="Save changes" />
 

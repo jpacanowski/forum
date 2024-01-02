@@ -17,15 +17,24 @@
       <select id="post_category" name="category_id" class="form-control">
       <option value="">[Thread category]</option>
         @foreach ($categories as $category)
-          <option value="{{ $category->id }}">{{ $category->name }}</option>
+          <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>{{ $category->name }}</option>
         @endforeach
       </select>
+      @error('category_id')
+        <p class="alert-danger">{{$message}}</p>
+      @enderror
 
       <label for="post_subject" class="visually-hidden">Thread subject:</label>
-      <input id="post_subject" name="subject" type="text" placeholder="Thread subject..." />
+      <input id="post_subject" name="subject" type="text" placeholder="Thread subject..." value="{{old('subject')}}" />
+      @error('subject')
+        <p class="alert-danger">{{$message}}</p>
+      @enderror
 
       <label for="post_content" class="visually-hidden">Thread content:</label>
-      <textarea id="post_content" name="content"></textarea>
+      <textarea id="post_content" name="content">{{old('content')}}</textarea>
+      @error('content')
+        <p class="alert-danger">{{$message}}</p>
+      @enderror
 
       <input class="btn_submit" type="submit" value="Create thread" />
     </form>
