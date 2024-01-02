@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Thread;
 use App\Models\Post;
 use App\Models\User;
+use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,17 +19,16 @@ class PostsController extends Controller
     }
 
     // Store post message
-    public function store(Request $request, Thread $thread) {
-        $formFields = $request->validate([
-            'content' => 'required|min:3'
-        ]);
+    public function store(PostRequest $request, Thread $thread) {
 
-        $formFields['user_id'] = Auth::user()->id;
-        $formFields['thread_id'] = $thread->id;
+        $validated = $request->validated();
+
+        $validated['user_id'] = Auth::user()->id;
+        $validated['thread_id'] = $thread->id;
 
         Auth::user()->increment('points', 10);
 
-        $post = Post::create($formFields);
+        $post = Post::create($validated);
 
         $thread->update(['last_post_date' => $post->created_at]);
 
@@ -36,12 +36,8 @@ class PostsController extends Controller
     }
 
     // Update post data
-    public function update(Request $request, Post $post) {
-        $formFields = $request->validate([
-            'content' => 'required'
-        ]);
-
-        $post->update($formFields);
+    public function update(PostRequest $request, Post $post) {
+        $post->update($request->validated());
         return back()->with('info', 'Post has been updated successfully');
     }
 
