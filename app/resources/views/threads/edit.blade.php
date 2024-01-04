@@ -35,8 +35,8 @@
       <select id="post_status" name="status" class="form-control">
         <option value="OPEN" {{ $thread->status == 'OPEN' ? 'selected' : '' }}>OPEN</option>
         <option value="CLOSED" {{ $thread->status == 'CLOSED' ? 'selected' : '' }}>CLOSED</option>
-        <option value="HIDDEN" {{ $thread->status == 'HIDDEN' ? 'selected' : '' }}>HIDDEN</option>
-        <option value="IMPORTANT" {{ $thread->status == 'IMPORTANT' ? 'selected' : '' }}>IMPORTANT</option>
+        <!-- <option value="HIDDEN" {{ $thread->status == 'HIDDEN' ? 'selected' : '' }}>HIDDEN</option> -->
+        <!-- <option value="IMPORTANT" {{ $thread->status == 'IMPORTANT' ? 'selected' : '' }}>IMPORTANT</option> -->
       </select>
 
       <label for="post_category">Thread category:</label>

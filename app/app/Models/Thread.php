@@ -41,6 +41,11 @@ class Thread extends Model
         }
     }
 
+    // public function scopeActive($query)
+    // {
+    //     return $query->where('status', '!=', 'HIDDEN');
+    // }
+
     // public function lastPost()
     // {
     //     return $this->hasOne('App\Models\Post')->latest();

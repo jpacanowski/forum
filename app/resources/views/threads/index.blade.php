@@ -11,7 +11,7 @@
   <main class="content">
     <ul class="threads">
       @foreach ($threads as $thread)
-        <li class="thread">
+        <li class="thread {{ $thread->status == 'CLOSED' ? 'thread--closed' : '' }}">
           <div class="thread__stats">
             <div class="thread__views">
               <span class="thread__count-data">{{ $thread->visits }}</span>
@@ -23,7 +23,7 @@
             </div>
           </div>
           <div>
-            <h2 class="thread__heading"><a href="/{{ $thread->slug }}">{{ $thread->subject }}</a></h2>
+            <h2 class="thread__heading"><a href="/{{ $thread->slug }}">{{ $thread->subject }} {{ $thread->status == 'CLOSED' ? '[CLOSED]' : '' }}</a></h2>
             <span class="thread__info">
               Rozpoczął: <a href="/user/{{ $thread->user->name }}">{{ $thread->user->name }}</a>
               @if($thread->posts->count() >= 1)

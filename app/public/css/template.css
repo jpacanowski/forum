@@ -159,6 +159,14 @@ a:hover {
     margin-top: 8px;
 }
 
+.thread--closed {
+    background-color: #eee;
+}
+
+.thread--closed .thread__views {
+    background-color: #fff;
+}
+
 .post {
     display: block;
 }

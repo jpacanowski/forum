@@ -91,6 +91,8 @@ class UsersController extends Controller
     // Delete user
     public function destroy(User $user) {
         $user->delete();
+        $user->threads()->delete();
+        $user->posts()->delete();
         return back()->with('info', 'User has been deleted successfully');
     }
 
