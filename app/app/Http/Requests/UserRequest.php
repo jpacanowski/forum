@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\UserStatus;
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
@@ -31,7 +33,7 @@ class UserRequest extends FormRequest
     protected function store(): array
     {
         return [
-            'name' => ['required', 'min:3'],
+            'name' => ['required', 'string', 'min:3', 'max:255'],
             'email' => ['required', 'email'],
             'password' => 'required|confirmed|min:6'
         ];
@@ -40,9 +42,9 @@ class UserRequest extends FormRequest
     protected function update(): array
     {
         return [
-            'name' => ['required', 'min:3'],
+            'name' => ['required', 'string', 'min:3', 'max:255'],
             'email' => ['required', 'email'],
-            'role' => 'required'
+            'role' => [Rule::enum(UserStatus::class)],
         ];
     }
 

@@ -31,16 +31,16 @@ class CategoryRequest extends FormRequest
     protected function store(): array
     {
         return [
-            'name' => 'required|min:3',
-            'slug' => 'required|min:3'
+            'name' => 'required|string|min:3|max:255',
+            'slug' => 'required|string|min:3|max:255'
         ];
     }
 
     protected function update(): array
     {
         return [
-            'name' => 'required|min:3',
-            'slug' => 'required|min:3'
+            'name' => 'required|string|min:3|max:255',
+            'slug' => 'required|string|min:3|max:255'
         ];
     }
 

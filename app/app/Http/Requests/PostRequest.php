@@ -31,14 +31,14 @@ class PostRequest extends FormRequest
     protected function store(): array
     {
         return [
-            'content' => 'required|min:3'
+            'content' => 'required|string|min:3'
         ];
     }
 
     protected function update(): array
     {
         return [
-            'content' => 'required|min:3'
+            'content' => 'required|string|min:3'
         ];
     }
 

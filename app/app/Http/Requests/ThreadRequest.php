@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\ThreadStatus;
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ThreadRequest extends FormRequest
@@ -31,19 +33,19 @@ class ThreadRequest extends FormRequest
     protected function store(): array
     {
         return [
-            'subject' => 'required|min:3',
-            'content' => 'required|min:3',
-            'category_id' => 'required'
+            'subject' => 'required|string|min:3|max:255',
+            'content' => 'required|string|min:3',
+            'category_id' => 'required|integer'
         ];
     }
 
     protected function update(): array
     {
         return [
-            'subject' => 'required',
-            'status' => 'required',
-            'category_id' => 'required',
-            'content' => 'required'
+            'subject' => 'required|string|min:3|max:255',
+            'content' => 'required|string|min:3',
+            'status' => [Rule::enum(ThreadStatus::class)],
+            'category_id' => 'required|integer'
         ];
     }
 
